@@ -1,23 +1,658 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "스타렉스 장기렌트 비교 서비스",
+      "serviceType": "스타렉스 장기렌트 추천 및 견적 비교",
+      "provider": {
+        "@type": "Organization",
+        "name": "스타렉스 장기렌트 전문 비교 업체",
+        "url": "https://yourdomain.com",
+        "sameAs": [
+          "https://www.facebook.com/yourpage",
+          "https://www.instagram.com/yourpage"
+        ]
+      },
+      "areaServed": "대한민국",
+      "description": "2026년 스타렉스 장기렌트 가격을 가장 저렴한 곳에서, 투명하게 비교 견적 받아보세요. 모델별 장점과 단점, 비용 절약 팁을 전문가가 안내해드립니다.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "스타렉스 장기렌트 상품",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "그랜드 스타렉스 9인승 장기렌트"
+            },
+            "description": "가족용 또는 비즈니스용으로 인기 있는 9인승 모델 장기렌트 상품"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "그랜드 스타렉스 12인승 장기렌트"
+            },
+            "description": "단체 이동 및 학원 차량에 적합한 12인승 모델 장기렌트 상품"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "스타렉스 리무진 및 캠핑카 장기렌트"
+            },
+            "description": "고급형 리무진 또는 캠핑카 개조 모델 장기렌트 상품"
+          }
+        ]
+      }
+    }
+  </script>
+
+  <!-- Google Fonts for professional Korean typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS Styling -->
+  <style>
+    /* Reset and Typography */
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      background-color: #f5f7fa; /* 부드러운 배경색 */
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: #3498db;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header Styling */
+    header {
+      background-color: #2c3e50; /* 진한 파란색-회색 */
+      color: white;
+      padding: 3rem 1rem 1.5rem; /* 타이틀이 잘 보이게 여백 확장 */
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      line-height: 1.3;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-top: 0;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.2s ease;
+      position: relative;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+    }
+    nav a:hover, nav a:focus {
+      color: #f1c40f; /* 밝은 노란색 */
+      text-decoration: none;
+      transform: scale(1.05);
+    }
+
+    /* Main Content Layout */
+    main {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    section {
+      background-color: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+    h2 {
+      color: #2c3e50;
+      font-size: 2rem;
+      font-weight: 800;
+      border-bottom: 3px solid #f1f3f5;
+      padding-bottom: 0.8rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+    h3 {
+      color: #34495e;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      border-left: 5px solid #3498db;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background-color: #fcfcfc;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #ecf0f1;
+      color: #34495e;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+
+    /* Accordion (FAQ) Styling */
+    dl dt {
+      font-weight: 700;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      color: #3498db;
+      transition: color 0.3s ease;
+      font-size: 1.1rem;
+      padding: 1rem 1.5rem;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      position: relative;
+    }
+    dl dt:hover {
+      background-color: #f1f1f1;
+    }
+    dl dt.active::after {
+      content: "−";
+    }
+    dl dt::after {
+      content: "+";
+      position: absolute;
+      right: 1.5rem;
+      font-weight: 900;
+      color: #3498db;
+      transition: transform 0.3s;
+    }
+    dl dd {
+      margin-left: 0;
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      line-height: 1.7;
+      display: none; /* Initial state */
+    }
+    dl dt.active + dd {
+      display: block;
+    }
+
+    /* CTA Button Styling */
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin: 2rem auto;
+      background-color: #e67e22; /* 주황색 */
+      color: white;
+      font-weight: 700;
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(230,126,34,0.3);
+    }
+    .cta-button:hover {
+      background-color: #d35400;
+      transform: translateY(-3px);
+    }
+
+    /* Keyword Tags Styling */
+    .keyword-tags {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-tags a {
+      background-color: #ecf0f1;
+      color: #34495e;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .keyword-tags a:hover {
+      background-color: #d1e5ff;
+      color: #2e86de;
+    }
+
+    /* Image Styling */
+    .main-image {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Form Styling (User Engagement) */
+    .quote-form {
+      background-color: #f9f9f9;
+      padding: 2.5rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border: 1px solid #eee;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #34495e;
+    }
+    .form-group input, .form-group select {
+      width: calc(100% - 20px);
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .form-button {
+      background-color: #3498db;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1.1rem;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    .form-button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      padding: 3rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: #ecf0f1;
+      margin-top: 3rem;
+      border-top: 1px solid #ddd;
+    }
+    .external-links {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+    }
+    .external-links a {
+      margin-right: 15px;
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .external-links a:hover {
+      text-decoration: underline;
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>2026 스타렉스 장기렌트 가격 비교 및 견적 가이드</h1>
+    <p>가장 저렴한 월 납입금, 투명한 견적, 전문가의 1:1 맞춤 상담으로 현명하게 선택하세요.</p>
+    <nav aria-label="메인 메뉴">
+      <ul>
+        <li><a href="#intro">서비스 소개</a></li>
+        <li><a href="#models">모델별 특징</a></li>
+        <li><a href="#cost-guide">비용 분석</a></li>
+        <li><a href="#pros-cons">장점과 단점</a></li>
+        <li><a href="#comparison">비교 견적</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="intro">
+      <h2>스타렉스 장기렌트, 왜 지금 선택해야 할까요?</h2>
+      <img src="https://images.pexels.com/photos/1035172/pexels-photo-1035172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="스타렉스 장기렌트 이미지 - 넓은 공간과 함께 야외 활동을 즐기는 모습" class="main-image">
+      <p>스타렉스 장기렌트는 법인이나 사업자뿐만 아니라 대가족을 둔 개인에게도 매우 합리적인 차량 구매 방법으로 주목받고 있습니다. 특히 2026년 최신 모델이 출시되면서, 더욱 개선된 연비와 안전 사양을 갖춘 스타렉스 모델을 장기렌트로 이용하려는 수요가 급증하고 있습니다. 스타렉스 장기렌트는 초기 비용 부담 없이 원하는 기간 동안 차량을 이용할 수 있으며, 월 렌탈료에 보험, 세금, 정비 비용까지 포함되어 있어 재정 관리가 투명하고 편리합니다.</p>
+      <p>하지만 스타렉스 장기렌트 견적을 제대로 받기 위해서는 여러 업체의 상품을 꼼꼼히 비교해야 합니다. 단순히 월 납입금이 저렴한 곳을 선택하기보다는, 계약 기간, 주행 거리 제한, 정비 옵션, 보증금 유무 등 세부 조건을 면밀히 검토하는 것이 중요합니다. 저희는 고객님께 가장 적합한 **스타렉스 장기렌트 견적**을 제안해 드리며, 복잡한 계약 과정을 간소화하여 편안하게 신차를 이용하실 수 있도록 도와드립니다.</p>
+      <div class="keyword-tags" aria-label="연관 키워드">
+        <a href="#cost-guide">스타렉스 장기렌트 가격</a>
+        <a href="#models">그랜드 스타렉스 9인승</a>
+        <a href="#models">그랜드 스타렉스 11인승</a>
+        <a href="#models">그랜드 스타렉스 12인승</a>
+        <a href="#pros-cons">장기렌트 장단점</a>
+        <a href="#comparison">스타렉스 장기렌트 저렴한곳</a>
+        <a href="#comparison">장기렌트 견적 비교</a>
+        <a href="#models">스타렉스 캠핑카 개조</a>
+        <a href="#pros-cons">장기렌트 단점</a>
+      </div>
+    </section>
+
+    <section id="models">
+      <h2>그랜드 스타렉스 모델별 장기렌트 특징 비교 (9인승 vs 11인승 vs 12인승)</h2>
+      <p>스타렉스는 다양한 용도로 활용되는 만큼 여러 모델이 존재합니다. 특히 9인승, 11인승, 12인승 모델은 각각 다른 장점을 가지고 있어, 고객님의 라이프스타일이나 사업 목적에 따라 최적의 모델을 선택하는 것이 중요합니다.</p>
+      
+      <h3>1. 그랜드 스타렉스 9인승 (승용차 분류)</h3>
+      <p>9인승 모델은 승용차로 분류되어 속도제한 장치가 적용되지 않고, 6인 이상 탑승 시 고속도로 버스 전용차로 이용이 가능합니다. 승합차 모델(11인승, 12인승)에 비해 승차감이 우수하며, 세금 혜택도 더 유리한 경우가 많아 가족용 차량이나 VIP 의전용으로 선호됩니다. 짐 공간도 넉넉하여 캠핑카 개조 수요도 높습니다. <strong>스타렉스 9인승 장기렌트</strong>는 2026년 기준으로 가장 인기가 많은 모델 중 하나입니다.</p>
+
+      <h3>2. 그랜드 스타렉스 11인승 및 12인승 (승합차 분류)</h3>
+      <p>11인승과 12인승 모델은 사업자에게 유리한 모델로, 부가가치세 환급 대상이 될 수 있습니다. 넓은 좌석을 활용하여 학원 차량, 통근 차량, 교회 차량 등 다인원 이동이 필요한 경우에 적합합니다. 다만 11인승 이상 승합차는 60km/h 이상의 속도제한이 적용되며, 1종 보통 면허가 필요합니다. <strong>스타렉스 11인승 장기렌트</strong>와 <strong>스타렉스 12인승 장기렌트</strong>는 대규모 인력 수송에 최적화된 선택입니다.</p>
+
+      <h3>모델별 주요 특징 비교표</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>그랜드 스타렉스 9인승</th>
+            <th>그랜드 스타렉스 11인승/12인승</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>차종 분류</td>
+            <td>승용차 (RV)</td>
+            <td>승합차</td>
+          </tr>
+          <tr>
+            <td>고속도로 전용차로</td>
+            <td>6인 이상 탑승 시 가능</td>
+            <td>6인 이상 탑승 시 가능</td>
+          </tr>
+          <tr>
+            <td>속도제한 장치</td>
+            <td>없음</td>
+            <td>적용 (최고 110km/h)</td>
+          </tr>
+          <tr>
+            <td>운전면허 조건</td>
+            <td>2종 보통 면허 이상</td>
+            <td>1종 보통 면허 이상</td>
+          </tr>
+          <tr>
+            <td>부가세 환급</td>
+            <td>불가능</td>
+            <td>사업자 부가세 환급 가능 (조건부)</td>
+          </tr>
+          <tr>
+            <td>주요 용도</td>
+            <td>가족용, 캠핑카, 의전용</td>
+            <td>학원/통근 차량, 단체 이동용</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#quote-form" class="cta-button">나에게 맞는 모델 추천받기</a>
+    </section>
+
+    <section id="cost-guide">
+      <h2>스타렉스 장기렌트 비용 견적 가이드: 저렴한곳 찾는 노하우</h2>
+      <p>스타렉스 장기렌트 견적은 단순히 차량 가격으로만 결정되지 않습니다. **평균 월 납입금**을 낮추고 **총 비용**을 절약하기 위해서는 여러 가지 요소를 꼼꼼히 따져봐야 합니다. 2026년 기준으로 스타렉스 장기렌트 비용을 결정하는 주요 요인과 **저렴한곳**을 찾는 방법을 자세히 안내해 드립니다.</p>
+
+      <h3>1. 스타렉스 장기렌트 비용의 구성 요소</h3>
+      <ul>
+        <li><strong>차량가 (모델 및 옵션)</strong>: 선택하는 스타렉스 모델(9인승, 11인승, 캠핑카 개조 여부)과 추가 옵션에 따라 기본 가격이 달라집니다.</li>
+        <li><strong>계약 기간</strong>: 일반적으로 계약 기간이 길어질수록 월 렌탈료는 낮아집니다. (예: 48개월보다 60개월 계약이 저렴)</li>
+        <li><strong>보증금 또는 선수금</strong>: 초기 비용으로 일정 금액을 납입하면 월 납입금을 크게 낮출 수 있습니다. (보증금은 계약 만료 시 반환, 선수금은 미리 내는 렌탈료로 소멸)</li>
+        <li><strong>잔존가치 (만기 시점 차량 가치)</strong>: 잔존가치가 높게 책정될수록 월 렌탈료가 낮아집니다.</li>
+        <li><strong>주행 거리 제한</strong>: 연간 주행 거리가 짧을수록 비용이 저렴해지지만, 계약 시 설정한 거리를 초과하면 위약금이 발생합니다.</li>
+        <li><strong>보험 및 정비 옵션</strong>: 자차 보험, 종합 보험, 그리고 정기적인 소모품 교체 정비 서비스 포함 여부에 따라 비용이 달라집니다.</li>
+      </ul>
+
+      <h3>2. 2026년 스타렉스 장기렌트 예상 금액 (예시)</h3>
+      <p>다음은 2026년 상반기 기준으로, **스타렉스 11인승** 기본 모델을 장기렌트할 경우의 예상 견적 금액입니다. (개인 신용도, 업체별 프로모션, 계약 조건에 따라 실제 견적은 달라질 수 있습니다.)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>월 납입금 (36개월 계약)</th>
+            <th>월 납입금 (48개월 계약)</th>
+            <th>월 납입금 (60개월 계약)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>보증금 0% (무보증)</td>
+            <td>50만원대 ~ 60만원대</td>
+            <td>40만원대 후반 ~ 50만원대 중반</td>
+            <td>40만원대 초반 ~ 50만원대 초반</td>
+          </tr>
+          <tr>
+            <td>보증금 20% 납입 시</td>
+            <td>40만원대 중반 ~ 50만원대 초반</td>
+            <td>30만원대 후반 ~ 40만원대 중반</td>
+            <td>30만원대 초반 ~ 40만원대 초반</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>*위 표의 금액은 참고용이며, 정확한 견적은 실시간 비교를 통해 확인해야 합니다. 특히 <strong>스타렉스 장기렌트 할인</strong> 이벤트나 **현금지원** 혜택을 제공하는 업체들이 많으니, 여러 곳을 비교해 보는 것이 중요합니다.</p>
+      
+      <h3>3. 저렴한곳 찾는 핵심 노하우</h3>
+      <p><strong>스타렉스 장기렌트 저렴한곳</strong>을 찾으려면 한 업체에만 의존해서는 안 됩니다. 렌트카 회사는 수십 곳이 넘으며, 매달 주력 모델에 따라 **신규 가입 혜택**, **사은품**, **지원금** 등의 프로모션이 다릅니다. 따라서 **스타렉스 장기렌트 순위**나 **가격 비교** 사이트를 통해 여러 업체의 견적을 실시간으로 비교해 보는 것이 가장 효율적입니다. 저희는 투명한 비교 분석을 통해 고객님의 조건에 맞는 최적의 <strong>장기렌트 전문 업체</strong>를 추천해 드립니다.</p>
+    </section>
+
+    <section id="pros-cons">
+      <h2>스타렉스 장기렌트 장단점 분석: 내돈내산 후기 기반</h2>
+      <p>모든 구매 방식에는 장점과 단점이 있습니다. 스타렉스 장기렌트 역시 마찬가지입니다. <strong>스타렉스 장기렌트 후기</strong>를 분석한 결과, 고객들이 가장 만족하는 부분과 아쉬워하는 부분을 명확하게 파악할 수 있었습니다. 장단점을 충분히 이해한 후 결정해야 후회 없는 선택을 할 수 있습니다.</p>
+
+      <h3>스타렉스 장기렌트의 장점 (Pros)</h3>
+      <ol>
+        <li><strong>초기 비용 부담 감소 (경제성)</strong>: 신차 구매 시 필수적으로 필요한 취득세, 등록세, 자동차세, 보험료 등을 모두 면제받을 수 있습니다. 보증금 0% 무보증 상품을 선택하면 초기 비용 없이 차량 이용이 가능합니다.</li>
+        <li><strong>세금 절감 효과 (사업자 혜택)</strong>: 장기렌트 월 렌탈료는 전액 손비 처리가 가능하여 사업자 및 법인에게 탁월한 절세 혜택을 제공합니다.</li>
+        <li><strong>사고 처리 및 정비 편리성</strong>: 사고 발생 시 렌터카 회사에서 모든 사고 처리를 대행해 주며, 정비 옵션 선택 시 차량 관리(소모품 교환, 정기 점검)까지 책임져 줍니다.</li>
+        <li><strong>할증 없는 보험료</strong>: 보험 이력이 갱신되지 않아 사고가 발생해도 보험료 할증 걱정이 없습니다.</li>
+      </ol>
+
+      <h3>스타렉스 장기렌트의 단점 (Cons)</h3>
+      <ol>
+        <li><strong>총 비용 증가 가능성 (이자율)</strong>: 차량을 직접 구매할 때보다 장기렌트의 총 비용이 더 높을 수 있습니다. 렌탈료에는 차량 가치 외에 이자 및 운영 수수료가 포함되기 때문입니다.</li>
+        <li><strong>주행 거리 제한</strong>: 계약 시 설정한 연간 주행 거리를 초과하면 위약금이 발생합니다. 주행 거리가 많은 고객에게는 부담이 될 수 있습니다.</li>
+        <li><strong>중도 해지 위약금</strong>: 계약 기간을 채우지 못하고 중도 해지할 경우, 과도한 위약금이 발생할 수 있습니다.</li>
+        <li><strong>'하' 번호판 사용</strong>: 개인 소유 차량과 달리 '하', '호', '허' 번호판을 사용합니다. 최근에는 인식이 많이 개선되었으나, 번호판에 민감한 고객에게는 단점일 수 있습니다.</li>
+      </ol>
+      <a href="#quote-form" class="cta-button">무료 견적을 통해 장단점 상세 비교하기</a>
+    </section>
+
+    <section id="comparison">
+      <h2>스타렉스 장기렌트 vs 할부 vs 리스 차이점 완벽 비교</h2>
+      <p>스타렉스 장기렌트는 할부 구매나 리스와 어떤 차이점이 있을까요? 각 방식의 **장단점**과 **차이점**을 정확히 이해하고 본인의 상황에 가장 적합한 방식을 선택하는 것이 중요합니다. 특히 비용 절감과 세금 혜택을 비교해 보세요.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>장기렌트</th>
+            <th>할부 구매</th>
+            <th>오토 리스 (금융리스)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>초기 비용</td>
+            <td>0원~ (보증금/선수금 선택)</td>
+            <td>높음 (취득세, 등록세, 보험료 등)</td>
+            <td>낮음 (보증금/선수금 선택)</td>
+          </tr>
+          <tr>
+            <td>월 납입금</td>
+            <td>렌탈료 (차량가+보험+세금+수수료)</td>
+            <td>원금+이자 (차량가+이자)</td>
+            <td>리스료 (차량가+이자+세금)</td>
+          </tr>
+          <tr>
+            <td>보험 및 세금</td>
+            <td>렌탈료에 포함, 렌터카 회사 명의</td>
+            <td>개인 명의 가입 및 납부</td>
+            <td>리스료에 포함, 리스사 명의</td>
+          </tr>
+          <tr>
+            <td>번호판</td>
+            <td>'하', '호', '허' (렌터카 번호)</td>
+            <td>일반 자가용 번호판</td>
+            <td>일반 자가용 번호판</td>
+          </tr>
+          <tr>
+            <td>사업자 혜택</td>
+            <td>손비 처리 가능 (전액)</td>
+            <td>감가상각 처리 가능</td>
+            <td>손비 처리 가능 (일부 제한)</td>
+          </tr>
+          <tr>
+            <td>만기 시 처리</td>
+            <td>반납, 인수, 재렌트</td>
+            <td>소유권 이전 (내차)</td>
+            <td>반납 또는 인수</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>스타렉스 장기렌트는 세금 부담이 크고 차량 관리에 신경 쓰고 싶지 않은 사업자에게 가장 적합합니다. 반면 **스타렉스 할부** 구매는 차량을 완전히 소유하고 싶고 주행 거리가 많은 고객에게 유리합니다. **스타렉스 리스**는 일반 번호판을 원하면서도 장기렌트처럼 초기 비용을 낮추고 싶은 경우 고려해볼 수 있습니다.</p>
+    </section>
+    
+    <!-- Pexels Image for visual engagement -->
+    <img src="https://images.pexels.com/photos/1035172/pexels-photo-1035172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="스타렉스 장기렌트 이미지 - 짐을 싣고 여행을 떠나는 모습" class="main-image">
+
+    <section id="faq">
+      <h2>자주 묻는 질문 (FAQ)</h2>
+      <dl>
+        <dt tabindex="0" aria-expanded="false">Q1. 스타렉스 장기렌트 계약 시 신용 등급이 중요한가요?</dt>
+        <dd>A1. 네, 중요합니다. 장기렌트는 금융 상품에 준하여 취급되므로 고객님의 신용 등급에 따라 계약 가능 여부와 보증금 조건이 달라집니다. 신용 등급이 낮을 경우 무보증 상품 진행이 어렵거나, 렌탈료가 높아질 수 있습니다. 신용 조회는 렌트 업체에서 비대면으로 진행하며, 신용 점수에 큰 영향을 미치지 않습니다.</dd>
+        <dt tabindex="0" aria-expanded="false">Q2. 계약 기간 만료 후 차량 인수는 어떻게 하나요?</dt>
+        <dd>A2. 계약 만기 시점의 차량 잔존가치와 인수 비용을 비교하여 인수를 결정할 수 있습니다. 렌탈료를 낮추기 위해 잔존가치를 높게 설정한 경우 인수 비용이 비싸질 수 있습니다. 반납을 선택할 경우 주행 거리 초과 위약금이나 차량 원상복구 비용이 발생할 수 있으므로, 만기 시점의 조건들을 꼼꼼히 확인해야 합니다.</dd>
+        <dt tabindex="0" aria-expanded="false">Q3. 장기렌트 계약 중 사고가 나면 보험 처리는 어떻게 되나요?</dt>
+        <dd>A3. 렌터카 회사 명의의 보험에 가입되어 있어, 고객의 보험료 할증 없이 처리가 가능합니다. 다만, 사고 발생 시 자차 처리 비용(면책금)을 납부해야 하며, 면책금은 계약 시 선택한 조건에 따라 달라집니다.</dd>
+        <dt tabindex="0" aria-expanded="false">Q4. 스타렉스 신형 모델도 장기렌트가 가능한가요?</dt>
+        <dd>A4. 네, 가능합니다. 2026년형 신형 모델뿐만 아니라, 고객이 원하는 옵션 사양을 모두 적용하여 계약할 수 있습니다. 다만 신형 모델은 재고가 부족할 수 있으므로, 견적 문의 시 출고 기간을 미리 확인하는 것이 좋습니다.</dd>
+        <dt tabindex="0" aria-expanded="false">Q5. 장기렌트 계약 시 사은품이나 현금 지원을 받을 수 있나요?</dt>
+        <dd>A5. 네, 렌터카 업체별로 경쟁적인 프로모션을 진행하는 경우가 많습니다. 특히 <strong>신규 가입 혜택</strong>이나 <strong>현금지원</strong>, <strong>상품권</strong> 등을 제공하는 이벤트가 있으니, 여러 업체를 비교하며 **스타렉스 장기렌트 할인** 정보를 확인하는 것이 좋습니다. 저희는 이러한 혜택을 취합하여 안내해 드립니다.</dd>
+      </dl>
+    </section>
+    
+    <section id="reliable-sources">
+      <h2>신뢰할 수 있는 장기렌트 정보 (외부 링크)</h2>
+      <p>보다 안전하고 현명한 계약을 위해 공신력 있는 기관의 정보를 확인하세요.</p>
+      <div class="external-links">
+        <a href="https://www.ftc.go.kr/www/CONTENTS_VIEW.html?CONTENTS_NO=10" target="_blank">공정거래위원회 - 소비자 피해 예방 가이드 (차량 구매/리스/렌트)</a>
+        <a href="https://www.kca.go.kr/home/sub.do?menu_seq=29" target="_blank">한국소비자원 - 자동차 리스/렌트 관련 피해사례 및 상담</a>
+        <a href="https://www.law.go.kr/LSW/lsInfoP.do?efYd=20210212&lsiSeq=230869#0000" target="_blank">국가법령정보센터 - 자동차 대여 표준약관</a>
+        <a href="https://namu.wiki/w/%EC%9E%A5%EA%B8%B0%EB%A0%8C%ED%8A%B8" target="_blank">나무위키 - 장기렌트카 관련 정보</a>
+        <a href="https://www.gov.kr/main?a=A000000010&b=B000000002&c=2" target="_blank">정부24 - 자동차 등록 관련 정보</a>
+      </div>
+    </section>
+    
+    <section id="quote-form">
+      <h2>스타렉스 장기렌트 무료 견적 요청</h2>
+      <p>지금 바로 **스타렉스 장기렌트 견적**을 요청하고, 여러 업체들의 **가격 비교** 견적을 받아보세요. 전문 상담사가 고객님의 조건에 맞는 최적의 <strong>장기렌트 상품</strong>을 찾아드립니다.</p>
+      <div class="quote-form">
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" placeholder="성함을 입력해주세요" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">연락처:</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력해주세요" required>
+          </div>
+          <div class="form-group">
+            <label for="model">희망 모델:</label>
+            <select id="model" name="model" required>
+              <option value="">-- 모델을 선택하세요 --</option>
+              <option value="starex_9seater">그랜드 스타렉스 9인승</option>
+              <option value="starex_11seater">그랜드 스타렉스 11인승</option>
+              <option value="starex_12seater">그랜드 스타렉스 12인승</option>
+              <option value="starex_cargo">그랜드 스타렉스 밴 (3인승/5인승)</option>
+              <option value="starex_limousine">그랜드 스타렉스 리무진</option>
+              <option value="starex_camper">그랜드 스타렉스 캠핑카 개조</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="period">희망 계약 기간 (개월):</label>
+            <select id="period" name="period" required>
+              <option value="">-- 계약 기간 선택 --</option>
+              <option value="36">36개월</option>
+              <option value="48">48개월</option>
+              <option value="60">60개월</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mileage">연간 주행 거리 (km):</label>
+            <select id="mileage" name="mileage" required>
+              <option value="">-- 주행 거리 선택 --</option>
+              <option value="10000">1만 km</option>
+              <option value="15000">1만 5천 km</option>
+              <option value="20000">2만 km</option>
+              <option value="30000">3만 km</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="condition">추가 요청 사항:</label>
+            <textarea id="condition" name="condition" placeholder="궁금한 점이나 특별히 원하는 옵션을 작성해주세요. (예: LPG 모델, 신용 8등급 가능 여부 등)"></textarea>
+          </div>
+          <button type="submit" class="form-button">무료 견적 요청하기</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Accordion functionality based on original JS
+      document.querySelectorAll('dl dt').forEach((dt) => {
+        dt.addEventListener('click', () => {
+          dt.classList.toggle('active');
+          const expanded = dt.getAttribute('aria-expanded') === 'true';
+          dt.setAttribute('aria-expanded', !expanded);
+          // Optional: Close other accordions when one opens
+          // document.querySelectorAll('dl dt.active').forEach((otherDt) => {
+          //   if (otherDt !== dt) {
+          //     otherDt.classList.remove('active');
+          //     otherDt.setAttribute('aria-expanded', 'false');
+          //   }
+          // });
+        });
+        dt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dt.click();
+          }
+        });
+      });
+      
+      // Add dynamic year to footer if needed
+      // const currentYear = new Date().getFullYear();
+      // document.querySelector('footer p').innerHTML = `&copy; ${currentYear} 스타렉스 장기렌트 전문 비교 업체. All rights reserved.`;
+    });
+  </script>
+  
